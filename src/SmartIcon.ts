@@ -34,6 +34,7 @@ export const SmartIcon = (config: SmartIconOptions, eventBus: EventBus) =>
             if (!this.shadowRoot) {
                 return;
             }
+            this.style.display = "inline-block";
             this.shadowRoot.innerHTML = this.generateTemplate!();
             eventBus.addEventListener(Events.UPDATED, this.update!);
         }
