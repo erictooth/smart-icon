@@ -1,3 +1,10 @@
+## [1.4.3](https://github.com/erictooth/smart-icon/compare/v1.4.2...v1.4.3) (2021-11-19)
+
+
+### Bug Fixes
+
+* if `globalThis.customElements` is not available, no-op when `define` is called ([da44ea2](https://github.com/erictooth/smart-icon/commit/da44ea2a844708fb924d51d703f56df5b0851a12))
+
 ## [1.4.2](https://github.com/erictooth/smart-icon/compare/v1.4.1...v1.4.2) (2021-11-16)
 
 
