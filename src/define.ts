@@ -12,6 +12,11 @@ type DefineFn = (componentName: string, options: DefineOptions) => DefineResult;
 const createdElems: Record<string, DefineResult> = {};
 
 export const define: DefineFn = (componentName, options) => {
+    if (!globalThis || !globalThis.customElements) {
+        return {
+            update: () => undefined
+        }
+    }
     if (globalThis.customElements.get(componentName)) {
         if (createdElems[componentName]) {
             console.error(
