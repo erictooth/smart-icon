@@ -10,16 +10,14 @@
     "files": [
         "dist-browser",
         "dist-cjs",
-        "dist-module",
-        "dist-types"
+        "dist-esm"
     ],
-    "main": "./dist-cjs/smart-icon.js",
+    "main": "./dist-cjs/index.js",
     "unpkg": "./dist-browser/smart-icon.iife.min.js",
-    "module": "./dist-module/smart-icon.mjs",
-    "types": "./dist-types/index.d.ts",
+    "module": "./dist-esm/index.js",
     "exports": {
-        "import": "./dist-module/smart-icon.mjs",
-        "require": "./dist-cjs/smart-icon.js"
+        "import": "./dist-esm/index.js",
+        "require": "./dist-cjs/index.js"
     },
     "scripts": {
         "prepack": "make prepack"
@@ -29,6 +27,8 @@
         "@erictooth/eslint-config": "^3",
         "@erictooth/prettier-config": "^4",
         "@erictooth/semantic-release-npm-github-config": "^1.0.3",
+        "@swc/cli": "^0.1.57",
+        "@swc/core": "^1.2.230",
         "esbuild": "^0.12.8",
         "eslint": "^7",
         "prettier": "^2",
