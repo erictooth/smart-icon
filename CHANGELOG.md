@@ -1,3 +1,13 @@
+# [2.0.0](https://github.com/erictooth/smart-icon/compare/v1.4.3...v2.0.0) (2022-08-14)
+
+
+* fix!: bundle TS types directly with built files, and build with swc ([7c65dce](https://github.com/erictooth/smart-icon/commit/7c65dce242a2eb34b0afb46762b49fce81300e2a))
+
+
+### BREAKING CHANGES
+
+* the paths of esm and cjs builds have changed
+
 ## [1.4.3](https://github.com/erictooth/smart-icon/compare/v1.4.2...v1.4.3) (2021-11-19)
 
 
