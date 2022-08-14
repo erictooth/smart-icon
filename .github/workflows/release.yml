@@ -6,24 +6,13 @@ on:
 jobs:
     test:
         name: Test & Build on Node ${{ matrix.node }} and ${{ matrix.os }}
-        runs-on: ${{ matrix.os }}
-        strategy:
-            matrix:
-                node: [16]
-                os:
-                    - ubuntu-latest
-                    - windows-latest
-                    - macOS-latest
-                include:
-                    - node: 14
-                      os: ubuntu-latest
+        runs-on: ubuntu-latest
         steps:
-            - name: Checkout
-              uses: actions/checkout@v2
-            - name: Setup Node
-              uses: actions/setup-node@v2
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
               with:
-                  node-version: ${{ matrix.node }}
+                  node-version: 16
+            - uses: pnpm/action-setup@v2
             - name: Lint
               run: make lint
             - name: Verify build succeeds
@@ -34,16 +23,13 @@ jobs:
         needs: test
         runs-on: ubuntu-latest
         steps:
-            - name: Checkout
-              uses: actions/checkout@v2
+            - uses: actions/checkout@v3
               with:
                   fetch-depth: 0
-            - name: Setup Node.js
-              uses: actions/setup-node@v2
+            - uses: actions/setup-node@v3
               with:
                   node-version: 16
-            - name: Install dependencies
-              run: make node_modules
+            - uses: pnpm/action-setup@v2
             - name: Release
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
