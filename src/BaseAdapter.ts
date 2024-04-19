@@ -5,10 +5,6 @@ export const BaseAdapter = (config: SmartIconOptions, eventBus: EventBus) =>
     class SmartIcon extends HTMLElement {
         constructor() {
             super();
-
-            this.attachShadow({
-                mode: "open",
-            });
         }
 
         getPath() {
@@ -36,12 +32,12 @@ export const BaseAdapter = (config: SmartIconOptions, eventBus: EventBus) =>
         };
 
         async connectedCallback() {
-            this.shadowRoot!.innerHTML = await this.generateTemplate();
+            this.innerHTML = await this.generateTemplate();
             eventBus.addEventListener(Events.UPDATED, this.update);
         }
 
         attributeChangedCallback(attrName: string): void {
-            if (this.shadowRoot && this.shadowRoot.children[0] && attrName === "name") {
+            if (this.children[0] && attrName === "name") {
                 this.update();
             }
         }

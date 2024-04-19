@@ -31,7 +31,7 @@ export const SVGFetchAdapter =
                 return this.getSvgText();
             }
             update = async () => {
-                this.shadowRoot!.innerHTML = await this.generateTemplate();
+                this.innerHTML = await this.generateTemplate();
             };
         };
     };

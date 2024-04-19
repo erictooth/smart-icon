@@ -9,7 +9,7 @@ export const SVGUseAdapter = (config: SmartIconOptions, eventBus: EventBus) =>
         }
 
         update = () => {
-            const useElem = this.shadowRoot!.getElementById("smart-icon__use")!;
+            const useElem = this.querySelector("#smart-icon__use")!;
             const href = this.getPath();
             useElem.setAttribute("xlink:href", href);
             useElem.setAttribute("href", href);
