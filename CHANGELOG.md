@@ -1,5 +1,8 @@
-# [2.0.0](https://github.com/erictooth/smart-icon/compare/v1.4.3...v2.0.0) (2022-08-14)
+# [3.0.0](https://github.com/erictooth/smart-icon/compare/v2.0.0...v3.0.0) (2024-04-19)
 
+* feat!: switch to light dom to allow access to element IDs in the parent DOM
+
+# [2.0.0](https://github.com/erictooth/smart-icon/compare/v1.4.3...v2.0.0) (2022-08-14)
 
 * fix!: bundle TS types directly with built files, and build with swc ([7c65dce](https://github.com/erictooth/smart-icon/commit/7c65dce242a2eb34b0afb46762b49fce81300e2a))
 
