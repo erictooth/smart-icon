@@ -23,6 +23,10 @@ export const BaseAdapter = (config: SmartIconOptions, eventBus: EventBus) =>
             return config.aliases[nameAttr] || nameAttr;
         }
 
+        set name(name: string) {
+            this.setAttribute("name", name);
+        }
+
         generateTemplate(): string | PromiseLike<string> {
             return "";
         }
