@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/erictooth/smart-icon/compare/v3.0.0...v3.0.1) (2024-07-19)
+
+
+### Bug Fixes
+
+* add setter for `name` to BaseAdapter ([f52cdad](https://github.com/erictooth/smart-icon/commit/f52cdad4fe3cbb88306b25775c868d4269634fd8))
+
 # [3.0.0](https://github.com/erictooth/smart-icon/compare/v2.0.0...v3.0.0) (2024-04-19)
 
 * feat!: switch to light dom to allow access to element IDs in the parent DOM
