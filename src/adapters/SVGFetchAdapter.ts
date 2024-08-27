@@ -9,11 +9,16 @@ export const SVGFetchAdapter =
     (options: SVGFetchAdapterOptions = {}) =>
     (config: SmartIconOptions, eventBus: EventBus) => {
         return class SVGFetchAdapter extends BaseAdapter(config, eventBus) {
-            async getSvgText(): Promise<string> {
+            async getSvgText(): Promise<Node> {
                 const svgText = await fetch(this.getPath()).then((res) => res.text());
 
+                const el = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+                el.setAttribute("width", "100%");
+                el.setAttribute("height", "100%");
+
                 if (!options.querySelector) {
-                    return svgText;
+                    el.innerHTML = svgText;
+                    return el.children[0];
                 }
 
                 const fragment = document
@@ -23,15 +28,21 @@ export const SVGFetchAdapter =
 
                 const viewBox = (fragment && fragment.getAttribute("viewBox")) || "";
 
-                return `<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" ${
-                    (viewBox && `viewBox="${viewBox}"`) || ""
-                }>${(fragment && fragment.innerHTML) || null}</svg>`;
+                if (viewBox) {
+                    el.setAttribute("viewBox", viewBox);
+                }
+
+                if (fragment) {
+                    el.innerHTML = fragment.innerHTML;
+                }
+
+                return el;
             }
             generateTemplate() {
                 return this.getSvgText();
             }
             update = async () => {
-                this.innerHTML = await this.generateTemplate();
+                this.replaceChildren(await this.getSvgText());
             };
         };
     };

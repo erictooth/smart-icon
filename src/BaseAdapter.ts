@@ -27,8 +27,8 @@ export const BaseAdapter = (config: SmartIconOptions, eventBus: EventBus) =>
             this.setAttribute("name", name);
         }
 
-        generateTemplate(): string | PromiseLike<string> {
-            return "";
+        generateTemplate(): Node | PromiseLike<Node> | null {
+            return null;
         }
 
         update = (): void | Promise<void> => {
@@ -36,7 +36,10 @@ export const BaseAdapter = (config: SmartIconOptions, eventBus: EventBus) =>
         };
 
         async connectedCallback() {
-            this.innerHTML = await this.generateTemplate();
+            const template = await this.generateTemplate();
+            if (template) {
+                this.replaceChildren(template);
+            }
             eventBus.addEventListener(Events.UPDATED, this.update);
         }
 

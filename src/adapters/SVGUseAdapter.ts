@@ -5,13 +5,17 @@ export const SVGUseAdapter = (config: SmartIconOptions, eventBus: EventBus) =>
     class SVGUseAdapter extends BaseAdapter(config, eventBus) {
         generateTemplate() {
             const href = this.getPath();
-            return `<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><use id="smart-icon__use" xlink:href="${href}" href="${href}" /></svg>`;
+            const el = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            el.setAttribute("width", "100%");
+            el.setAttribute("height", "100%");
+            const useEl = document.createElementNS("http://www.w3.org/2000/svg", "use");
+            useEl.setAttribute("href", href);
+            el.replaceChildren(useEl);
+            return el;
         }
 
         update = () => {
-            const useElem = this.querySelector("#smart-icon__use")!;
-            const href = this.getPath();
-            useElem.setAttribute("xlink:href", href);
-            useElem.setAttribute("href", href);
+            const useElem = this.children[0].children[0];
+            useElem.setAttribute("href", this.getPath());
         };
     };
