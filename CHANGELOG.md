@@ -1,3 +1,10 @@
+## [4.0.1](https://github.com/erictooth/smart-icon/compare/v4.0.0...v4.0.1) (2024-08-27)
+
+
+### Bug Fixes
+
+* replace eventbus with document query to force icons to re-render ([4fd6e4f](https://github.com/erictooth/smart-icon/commit/4fd6e4faa7a405ab90a14f8638b3e1abd12a586a))
+
 ## [3.0.1](https://github.com/erictooth/smart-icon/compare/v3.0.0...v3.0.1) (2024-07-19)
 
 
