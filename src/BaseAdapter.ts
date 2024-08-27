@@ -1,7 +1,6 @@
-import { Events } from "./events";
-import { SmartIconOptions, EventBus } from "./types";
+import { SmartIconOptions } from "./types";
 
-export const BaseAdapter = (config: SmartIconOptions, eventBus: EventBus) =>
+export const BaseAdapter = (config: SmartIconOptions) =>
     class SmartIcon extends HTMLElement {
         constructor() {
             super();
@@ -40,16 +39,11 @@ export const BaseAdapter = (config: SmartIconOptions, eventBus: EventBus) =>
             if (template) {
                 this.replaceChildren(template);
             }
-            eventBus.addEventListener(Events.UPDATED, this.update);
         }
 
         attributeChangedCallback(attrName: string): void {
             if (this.children[0] && attrName === "name") {
                 this.update();
             }
-        }
-
-        disconnectedCallback(): void {
-            eventBus.removeEventListener(Events.UPDATED, this.update);
         }
     };

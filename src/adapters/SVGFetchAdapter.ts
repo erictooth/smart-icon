@@ -1,4 +1,4 @@
-import { SmartIconOptions, EventBus } from "../types";
+import { SmartIconOptions } from "../types";
 import { BaseAdapter } from "../BaseAdapter";
 
 type SVGFetchAdapterOptions = {
@@ -7,8 +7,8 @@ type SVGFetchAdapterOptions = {
 
 export const SVGFetchAdapter =
     (options: SVGFetchAdapterOptions = {}) =>
-    (config: SmartIconOptions, eventBus: EventBus) => {
-        return class SVGFetchAdapter extends BaseAdapter(config, eventBus) {
+    (config: SmartIconOptions) => {
+        return class SVGFetchAdapter extends BaseAdapter(config) {
             async getSvgText(): Promise<Node> {
                 const svgText = await fetch(this.getPath()).then((res) => res.text());
 

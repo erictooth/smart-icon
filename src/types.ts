@@ -10,5 +10,3 @@ export type DefineOptions = {
     aliases?: SmartIconOptions["aliases"];
     resolvePath: SmartIconOptions["resolvePath"];
 };
-
-export type EventBus = Comment;

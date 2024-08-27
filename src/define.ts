@@ -1,5 +1,4 @@
-import { Events } from "./events";
-import { DefineOptions, SmartIconOptions, EventBus } from "./types";
+import { DefineOptions, SmartIconOptions } from "./types";
 
 type DefineResult = {
     update: (
@@ -34,13 +33,15 @@ export const define: DefineFn = (componentName, options) => {
         aliases: options.aliases || {},
     };
 
-    const eventBus: EventBus = new Comment("smart-icon-events");
-
     const triggerUpdate = (): void => {
-        eventBus.dispatchEvent(new CustomEvent(Events.UPDATED));
+        for (const el of document.querySelectorAll(componentName)) {
+            if ("update" in el && typeof el.update === "function") {
+                el.update();
+            }
+        }
     };
 
-    globalThis.customElements.define(componentName, options.adapter(config, eventBus));
+    globalThis.customElements.define(componentName, options.adapter(config));
 
     const result: DefineResult = {
         update: (options) => {

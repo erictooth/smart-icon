@@ -1,8 +1,8 @@
-import { SmartIconOptions, EventBus } from "../types";
+import { SmartIconOptions } from "../types";
 import { BaseAdapter } from "../BaseAdapter";
 
-export const SVGUseAdapter = (config: SmartIconOptions, eventBus: EventBus) =>
-    class SVGUseAdapter extends BaseAdapter(config, eventBus) {
+export const SVGUseAdapter = (config: SmartIconOptions) =>
+    class SVGUseAdapter extends BaseAdapter(config) {
         generateTemplate() {
             const href = this.getPath();
             const el = document.createElementNS("http://www.w3.org/2000/svg", "svg");
