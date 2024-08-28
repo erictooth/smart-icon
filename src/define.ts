@@ -13,8 +13,8 @@ const createdElems: Record<string, DefineResult> = {};
 export const define: DefineFn = (componentName, options) => {
     if (!globalThis || !globalThis.customElements) {
         return {
-            update: () => undefined
-        }
+            update: () => undefined,
+        };
     }
     if (globalThis.customElements.get(componentName)) {
         if (createdElems[componentName]) {

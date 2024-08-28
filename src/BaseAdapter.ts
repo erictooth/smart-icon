@@ -26,7 +26,7 @@ export const BaseAdapter = (config: SmartIconOptions) =>
             this.setAttribute("name", name);
         }
 
-        generateTemplate(): Node | PromiseLike<Node> | null {
+        generateTemplate(): Node | null {
             return null;
         }
 
@@ -34,8 +34,8 @@ export const BaseAdapter = (config: SmartIconOptions) =>
             return;
         };
 
-        async connectedCallback() {
-            const template = await this.generateTemplate();
+        connectedCallback() {
+            const template = this.generateTemplate();
             if (template) {
                 this.replaceChildren(template);
             }
