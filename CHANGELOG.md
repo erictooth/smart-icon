@@ -1,3 +1,15 @@
+# [5.0.0](https://github.com/erictooth/smart-icon/compare/v4.0.1...v5.0.0) (2024-08-28)
+
+
+### Performance Improvements
+
+* remove async option for generateTemplate ([80dfdef](https://github.com/erictooth/smart-icon/commit/80dfdefc4f5ea442c9953c5c4be472d94e92a0e9))
+
+
+### BREAKING CHANGES
+
+* Adapters must now return an element synchronously
+
 ## [4.0.1](https://github.com/erictooth/smart-icon/compare/v4.0.0...v4.0.1) (2024-08-27)
 
 
